@@ -11,3 +11,7 @@ pip install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple
 ### Ⅱ 下载数据集
 
 从链接(https://www.modelscope.cn/datasets/gongjy/minimind_dataset/files) 下载所需数据文件，并放入 `./dataset` 目录
+
+- 预训练: pretrain_t2t.jsonl
+- 有监督微调: sft_t2t.jsonl
+- RL: rlaif.jsonl
