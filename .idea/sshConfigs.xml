@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="SshConfigs">
+    <configs>
+      <sshConfig authType="PASSWORD" host="connect.bjb1.seetacloud.com" id="220f1f0c-5b81-4f05-8a75-0e817a529c7c" port="49386" nameFormat="DESCRIPTIVE" username="root" useOpenSSHConfig="true" />
+      <sshConfig authType="PASSWORD" host="connect.bjb1.seetacloud.com" id="9635f19f-bf9b-4b0b-b704-8d37772382c4" port="45305" nameFormat="DESCRIPTIVE" username="root" useOpenSSHConfig="true" />
+      <sshConfig authType="PASSWORD" host="link.lanyun.net" id="0c85d4c8-585f-4fcb-a18d-bf545997b54f" port="43111" nameFormat="DESCRIPTIVE" username="root" useOpenSSHConfig="true" />
+    </configs>
+  </component>
+</project>

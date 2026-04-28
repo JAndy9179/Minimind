@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PublishConfigData" serverName="minimind-2" remoteFilesAllowedToDisappearOnAutoupload="false">
+    <serverData>
+      <paths name="lanyun">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/root/lanyun-tmp/Minimind" local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+      <paths name="minimind-2">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/root/autodl-tmp/Minimind" local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+      <paths name="minimind-L">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/root/autodl-tmp/Minimind" local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+    </serverData>
+  </component>
+</project>

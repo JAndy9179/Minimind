@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="192b8c1b-9ff2-4283-85c2-4c9c25ea2056" name="minimind-2">
+        <fileTransfer accessType="SFTP" host="connect.bjb1.seetacloud.com" port="49386" sshConfigId="220f1f0c-5b81-4f05-8a75-0e817a529c7c" sshConfig="root@connect.bjb1.seetacloud.com:49386 password">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" keepAliveTimeout="0" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+      <webServer id="ebef3d01-995b-4ef6-8d9e-3fb79d668b95" name="minimind-L">
+        <fileTransfer accessType="SFTP" host="connect.bjb1.seetacloud.com" port="45305" sshConfigId="9635f19f-bf9b-4b0b-b704-8d37772382c4" sshConfig="root@connect.bjb1.seetacloud.com:45305 password">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" keepAliveTimeout="0" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+      <webServer id="9f1044e9-a164-4019-890b-5859814f73b2" name="lanyun">
+        <fileTransfer accessType="SFTP" host="link.lanyun.net" port="43111" sshConfigId="0c85d4c8-585f-4fcb-a18d-bf545997b54f" sshConfig="root@link.lanyun.net:43111 password">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" keepAliveTimeout="0" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
