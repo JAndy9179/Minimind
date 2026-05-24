@@ -31,9 +31,10 @@ class MiniMindConfig(PretrainedConfig):
         aux_loss_alpha: float = 5e-4,
         num_router_experts: int = 4,
         num_shared_experts: int = 1,
-        moe_top_k: int = 2
+        moe_top_k: int = 2,
+        **kwargs
     ):
-        super().__init__()
+        super().__init__(**kwargs)
         self.vocab_size = vocab_size
         self.num_hidden_layers = num_hidden_layers
         self.hidden_dim = hidden_dim
@@ -556,7 +557,7 @@ if __name__ == '__main__':
     # moe_router = MOERouter(config)
     # moe_ffn = MOEFeedForward(config)
     # model = MiniMindModel(config)
-    
+
     # hidden_states, _ = attn(x=hidden_states, position_embeddings=(cos, sin))
     # hidden_states, _ = block(x=hidden_states, position_embeddings=(cos, sin))
     # router_weights, select_expert_ids, aux_loss = moe_router(hidden_states)
@@ -570,5 +571,3 @@ if __name__ == '__main__':
     #
     # y = x.new_full((x.size(0), 1), 2)
     # print(y)
-
-

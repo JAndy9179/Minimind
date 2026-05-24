@@ -103,8 +103,21 @@ class TorchRolloutEngine(RolloutEngine):
             )
 
             prompt_lens = prompt_ids.size(1)
+            # output.shape = (B * num_gen, R)
             completion_ids = output_ids[:, prompt_lens:]
+
+            # 生成 mask, 用于 mask prompt 中的 pad_token_ids 和 response 中作为 pad 的 eos_token_id
+            # 在 train_agent.py 场景下, 由于 prompt_ids 是单条样本且并没有填充到最大长度, 且模型回答的时候也不会用 eos_token_id 填充, 因此好像可以不用这么麻烦处理
+            # full_mask.shape = (B * num_gen, P + R)
+            # completion_mask.shape = (B * num_gen, R)
             full_mask = (output_ids != self.tokenizer.pad_token_id).long()
+            resp_mask = (completion_ids == self.tokenizer.eos_token_id).long()
+            valid_resp_mask = torch.cumsum(resp_mask, dim=-1) <= 1
+            completion_masks = valid_resp_mask * (
+                completion_ids != self.tokenizer.pad_token_id
+            ).long()
+            full_mask[:, prompt_lens:] = full_mask[:, prompt_lens:] * valid_resp_mask.long()
+
             per_token_logps = compute_per_token_logps(self.policy_model, output_ids, completion_ids.size(1), attention_mask=full_mask)
 
         completions = self.tokenizer.batch_decode(completion_ids, skip_special_tokens=True)
@@ -114,8 +127,26 @@ class TorchRolloutEngine(RolloutEngine):
             per_token_logps=per_token_logps,
             completions=completions,
             prompt_lens=prompt_ids.new_full((output_ids.size(0), ), prompt_lens),
-            completion_masks=attention_mask.new_ones(completion_ids.size(0), completion_ids.size(1))
+            completion_masks=completion_masks
         )
 
     def update_policy(self, model: torch.nn.Module):
         self.policy_model = model
+
+
+def create_rollout_engine(
+    engine_type: str = 'torch',
+    policy_model: torch.nn.Module = None,
+    tokenizer=None,
+    device: str = 'cuda',
+    autocast_ctx=None,
+    sglang_base_url: str = None,
+    sglang_model_path: str = None,
+    sglang_shared_path: str = None,
+) -> RolloutEngine:
+    if engine_type == 'torch':
+        return TorchRolloutEngine(policy_model, tokenizer, autocast_ctx)
+    elif engine_type == 'sglang':
+        raise ValueError(f"不支持的引擎类型: sglang")
+    else:
+        raise ValueError(f"不支持的引擎类型: {engine_type}")
