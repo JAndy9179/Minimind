@@ -22,3 +22,7 @@ pip install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple
 - SFT: python train_full_sft.py --epochs 2 --use_moe 1 --num_hidden_layers 6 --hidden_size 640 --accumulation_steps 4 --batch_size 8
 - PPO: python train_ppo.py --epochs 1 --use_moe 1 --num_hidden_layers 6 --hidden_size 640 --accumulation_steps 1 --batch_size 2
 - GRPO: python train_grpo.py --epochs 2 --use_moe 1 --num_hidden_layers 6 --hidden_size 640 --accumulation_steps 1 --batch_size 2
+
+### Ⅳ 测试
+
+运行代码 `./scripts/convert_model.py` 将模型保存为 transformer 格式，之后运行 `cd scripts && streamlit run web.py` 进行测试
